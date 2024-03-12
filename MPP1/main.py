@@ -21,6 +21,8 @@ def knn(k, vector, space):
         else:
             if(closest[closest.length-1][0] > sum):
                 closest[closest.length-1] = (sum, v[v.length-1])
+    #TODO: find every possible outcome and put it in array
+    #TODO: count number of outcomes in closest and return verdict
                   
 k = int(input("Podaj k: "))
 train_list = read_file("train_set.csv")
