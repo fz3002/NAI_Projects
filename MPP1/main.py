@@ -1,6 +1,4 @@
 import csv
-import random
-
 
 #read csv file into list
 def read_file(file_name):
@@ -20,11 +18,12 @@ def knn(k, vector, space):
     
     #finding k nearest neighbors
     for v in space:
-        sum = 0.0;
+        sum = 0;
         for i in range(len(vector)):
-            sum += ((float(vector[i]) - float(v[i]))**2)
-        distance_vector_atribute.append((round(sum, 3), v[len(v) - 1]))
-    closest = sorted(distance_vector_atribute)[:k]
+            sum += round(((float(vector[i]) - float(v[i]))**2),3)
+        distance_vector_atribute.append((sum, v[len(v) - 1]))
+    distance_vector_atribute.sort()
+    closest = distance_vector_atribute[:k]
     
     #counting neighbors
     for e in closest:
@@ -32,7 +31,7 @@ def knn(k, vector, space):
             most_frequent.update({e[1]:1})
         else:
             most_frequent[e[1]] += 1
-            
+
     #finding max freq
     max_frequent = max(most_frequent.values())
     
@@ -60,8 +59,6 @@ def accuracy_for_each_k(test_list, train_list):
 k = int(input("Podaj k: "))
 train_list = read_file("train_set.csv")
 test_list = read_file("test_set.csv")
-random.shuffle(train_list)
-random.shuffle(test_list)
 good_results = 0
 number_of_coords = len(train_list[0])-1
 
@@ -77,7 +74,7 @@ for e in test_list:
 #print out accuracy of testing for given k
 print("accuracy: ", good_results/len(test_list))
 
-accuracy_for_each_k(test_list, train_list)
+#accuracy_for_each_k(test_list, train_list)
 
 #Looped vector testing
 while(True):
