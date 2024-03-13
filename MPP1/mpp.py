@@ -1,6 +1,5 @@
 import csv
 import math
-import random
 
 #read csv file into list
 def read_file(file_name):
@@ -84,14 +83,10 @@ def accuracy_for_each_k(test_list, train_list):
 
 
 k = int(input("Podaj k: "))
-full_dataset = read_file("iris.csv")
 train_list = read_file("train_set.csv")
 test_list = read_file("test_set.csv")
 train_list = normilize(train_list)
 test_list = normilize(test_list)
-full_dataset = normilize(full_dataset)
-test_list_2 = random.sample(test_list, 35)
-train_list_2 = [element for element in full_dataset if element not in test_list_2]
 good_results = 0
 number_of_coords = len(train_list[0])-1
 
@@ -108,10 +103,6 @@ for e in test_list:
 print("accuracy: ", good_results/len(test_list))
 
 accuracy_for_each_k(test_list, train_list)
-
-print("Randomized data")
-
-accuracy_for_each_k(train_list_2, test_list_2)
 
 #Looped vector testing
 while(True):
