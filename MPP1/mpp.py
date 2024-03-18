@@ -11,31 +11,6 @@ def read_file(file_name):
     f.close()
     return list
 
-def normilize(dataset):
-    attributes_values = []
-
-    #get values for each attribute in dataset
-    for i in range(len(dataset[0])-1):
-        attributes_values.append([])
-    for row in dataset:
-        for i in range(len(row)-1):
-            attributes_values[i].append(float(row[i]))
-
-    max_attributes = []
-    min_attributes = []
-
-    #get max and min value for each attribute in dataset
-    for attribute in attributes_values:
-        max_attributes.append(max(attribute))
-        min_attributes.append(min(attribute))
-
-    #normalize every value
-    for row in dataset:
-        for i in range(len(row)-1):
-            row[i] = round((float(row[i]) - min_attributes[i])/(max_attributes[i] - min_attributes[i]),3)
-    
-    return dataset
-
 #function finding k closest vectors to a given one
 def knn(k, vector, space):
     closest = []
@@ -85,8 +60,8 @@ def accuracy_for_each_k(test_list, train_list):
 k = int(input("Podaj k: "))
 train_list = read_file("train_set.csv")
 test_list = read_file("test_set.csv")
-train_list = normilize(train_list)
-test_list = normilize(test_list)
+train_list = train_list
+test_list = test_list
 good_results = 0
 number_of_coords = len(train_list[0])-1
 
