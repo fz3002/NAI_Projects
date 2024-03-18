@@ -21,7 +21,7 @@ def knn(k, vector, space):
     for v in space:
         sum = 0;
         for i in range(len(vector)):
-            sum += round(((vector[i] - v[i])**2),3)
+            sum += round(((float(vector[i]) - float(v[i]))**2),3)
         distance_vector_atribute.append((math.sqrt(sum), v[len(v) - 1]))
     distance_vector_atribute.sort()
     closest = distance_vector_atribute[:k]
@@ -51,8 +51,8 @@ def accuracy_for_each_k(test_list, train_list):
             knn_result = knn(i, vector, train_list)
             if(knn_result == test_result):
                 good_results += 1
-        print("k:", i, "accuracy: ", good_results/len(test_list))     
-
+        #print("k:", i, "accuracy: ", good_results/len(test_list))     
+        print(good_results/len(test_list))
 
 ##########################################Testing and interface
 
