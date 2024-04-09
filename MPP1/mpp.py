@@ -59,8 +59,6 @@ def accuracy_for_each_k(test_list, train_list):
 k = int(input("Podaj k: "))
 train_list = read_file("train_set.csv")
 test_list = read_file("test_set.csv")
-train_list = train_list
-test_list = test_list
 good_results = 0
 number_of_coords = len(train_list[0])-1
 
